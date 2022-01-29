@@ -16,12 +16,12 @@ public class EventConsumer {
     private final KafkaConsumer<String, String> consumer;
 
     public EventConsumer() {
-        this.consumer = new KafkaConsumer<String, String>(properties());
+        this.consumer = new KafkaConsumer<>(properties());
     }
 
     public void run() {
         List<String> topics = new ArrayList<>();
-        topics.add("EVENT_REGISTER");
+        topics.add("apuminador");
         consumer.subscribe(topics);
 
         log.info("iniciando consumidor...");
@@ -34,16 +34,15 @@ public class EventConsumer {
                 records.forEach(record -> {
                     log.info("\n>>> \nTopic {} \nPartition {} \nMessage {} \n <<<", record.topic(), record.partition(), record.value());
                 });
-
+                System.exit(0);
             }
-            System.out.println(">>> Agurandano novas mensagens... <<<");
-        }
+            }
     }
 
     private static Properties properties() {
         var properties = new Properties();
         properties.setProperty(ConsumerConfig.GROUP_ID_CONFIG, "dafult");
-        properties.setProperty(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:19092");
+        properties.setProperty(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9093");
         properties.setProperty(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         properties.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
 

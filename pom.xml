@@ -18,12 +18,13 @@
         <kafka.version>3.0.0</kafka.version>
         <lombok.version>1.18.22</lombok.version>
         <slf4j-api.version>1.7.33</slf4j-api.version>
+        <logback-classic.version>1.2.10</logback-classic.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka_2.13</artifactId>
+            <artifactId>kafka-clients</artifactId>
             <version>${kafka.version}</version>
         </dependency>
         <dependency>
@@ -40,7 +41,7 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.2.10</version>
+            <version>${logback-classic.version}</version>
         </dependency>
 
     </dependencies>

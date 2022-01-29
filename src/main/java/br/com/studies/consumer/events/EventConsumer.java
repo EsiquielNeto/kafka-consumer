@@ -36,7 +36,7 @@ public class EventConsumer {
                 });
                 System.exit(0);
             }
-            }
+        }
     }
 
     private static Properties properties() {
